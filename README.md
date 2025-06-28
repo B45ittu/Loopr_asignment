@@ -329,15 +329,6 @@ DELETE /api/transactions/:id                # Delete transaction
 
 ### Common Issues
 
-**Backend Connection Issues:**
-```bash
-# Check MongoDB service
-mongod --version
-
-# Check if MongoDB is running
-sudo systemctl status mongod
-```
-
 **Frontend Build Issues:**
 ```bash
 # Clear node_modules and reinstall
@@ -355,30 +346,5 @@ npm install
 - Clear browser localStorage
 
 ---
-
-## 🔮 Future Enhancements
-
-### Planned Features
-- **Real-time Updates:** WebSocket integration
-- **Advanced Analytics:** More chart types and insights
-- **User Roles:** Admin and user permissions
-- **Mobile App:** React Native version
-- **Notifications:** Email and push notifications
-- **Data Import:** Bulk transaction import
-- **Budget Tracking:** Budget limits and alerts
-- **Multi-currency:** Support for different currencies
-
-### Technical Improvements
-- **Unit Testing:** Jest and React Testing Library
-- **E2E Testing:** Cypress or Playwright
-- **CI/CD:** GitHub Actions pipeline
-- **Docker:** Containerization
-- **Performance Monitoring:** Analytics and logging
-
----
-
-## 👨‍💻 Developer
-
-Built with ❤️ using modern web technologies.
 
 **Happy Coding! 🚀**

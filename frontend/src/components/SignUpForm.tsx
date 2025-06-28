@@ -2,9 +2,21 @@ import React, { useState } from 'react';
 import { Box, Avatar, Typography, TextField, Button, Alert, CircularProgress, Stack } from '@mui/material';
 import { Link } from 'react-router-dom';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CancelIcon from '@mui/icons-material/Cancel';
 
 interface SignUpFormProps {
   onSignUp: (name: string, email: string, password: string) => Promise<void>;
+}
+
+function getPasswordRequirements(password: string) {
+  return {
+    length: password.length >= 8,
+    uppercase: /[A-Z]/.test(password),
+    lowercase: /[a-z]/.test(password),
+    number: /\d/.test(password),
+    special: /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password),
+  };
 }
 
 const SignUpForm: React.FC<SignUpFormProps> = ({ onSignUp }) => {
@@ -84,6 +96,36 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onSignUp }) => {
         autoComplete="new-password"
         color="secondary"
       />
+      {/* Password requirements checklist */}
+      <Box sx={{ width: '100%', mb: 1, mt: -1 }}>
+        {(() => {
+          const req = getPasswordRequirements(password);
+          return (
+            <>
+              <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 600 }}>
+                Password must contain:
+              </Typography>
+              <Stack direction="column" spacing={0.5} sx={{ mt: 0.5 }}>
+                <Typography variant="caption" color={req.length ? 'success.main' : 'text.secondary'}>
+                  {req.length ? <CheckCircleIcon fontSize="inherit" color="success" sx={{ verticalAlign: 'middle', mr: 0.5 }} /> : <CancelIcon fontSize="inherit" color="error" sx={{ verticalAlign: 'middle', mr: 0.5 }} />}At least 8 characters
+                </Typography>
+                <Typography variant="caption" color={req.uppercase ? 'success.main' : 'text.secondary'}>
+                  {req.uppercase ? <CheckCircleIcon fontSize="inherit" color="success" sx={{ verticalAlign: 'middle', mr: 0.5 }} /> : <CancelIcon fontSize="inherit" color="error" sx={{ verticalAlign: 'middle', mr: 0.5 }} />}One uppercase letter
+                </Typography>
+                <Typography variant="caption" color={req.lowercase ? 'success.main' : 'text.secondary'}>
+                  {req.lowercase ? <CheckCircleIcon fontSize="inherit" color="success" sx={{ verticalAlign: 'middle', mr: 0.5 }} /> : <CancelIcon fontSize="inherit" color="error" sx={{ verticalAlign: 'middle', mr: 0.5 }} />}One lowercase letter
+                </Typography>
+                <Typography variant="caption" color={req.number ? 'success.main' : 'text.secondary'}>
+                  {req.number ? <CheckCircleIcon fontSize="inherit" color="success" sx={{ verticalAlign: 'middle', mr: 0.5 }} /> : <CancelIcon fontSize="inherit" color="error" sx={{ verticalAlign: 'middle', mr: 0.5 }} />}One number
+                </Typography>
+                <Typography variant="caption" color={req.special ? 'success.main' : 'text.secondary'}>
+                  {req.special ? <CheckCircleIcon fontSize="inherit" color="success" sx={{ verticalAlign: 'middle', mr: 0.5 }} /> : <CancelIcon fontSize="inherit" color="error" sx={{ verticalAlign: 'middle', mr: 0.5 }} />}One special character
+                </Typography>
+              </Stack>
+            </>
+          );
+        })()}
+      </Box>
       {error && (
         <Alert severity="error" sx={{ width: '100%', my: 1 }}>
           {error}
