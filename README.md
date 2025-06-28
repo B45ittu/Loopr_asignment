@@ -377,9 +377,7 @@ npm install
 
 ---
 
-## 📄 License
 
-This project is created for the Looper Assignment. All rights reserved.
 
 ---
 
