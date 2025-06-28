@@ -216,9 +216,13 @@ const HomePage: React.FC<DashboardProps> = ({ onLogout }) => {
   );
 
   // Calculate summary values from filteredTransactions (all, for graph)
-  const balance = filteredTransactions.reduce((sum, t) => sum + t.amount, 0);
-  const revenue = filteredTransactions.filter(t => t.amount > 0).reduce((sum, t) => sum + t.amount, 0);
-  const expenses = filteredTransactions.filter(t => t.amount < 0).reduce((sum, t) => sum + t.amount, 0);
+  const revenue = filteredTransactions
+    .filter(t => t.category === 'Revenue')
+    .reduce((sum, t) => sum + Math.abs(t.amount), 0);
+  const expenses = filteredTransactions
+    .filter(t => t.category === 'Expense')
+    .reduce((sum, t) => sum + Math.abs(t.amount), 0);
+  const balance = revenue - expenses;
   const savings = balance;
 
   // Recent transactions (latest 3 from all filtered)
@@ -234,8 +238,8 @@ const HomePage: React.FC<DashboardProps> = ({ onLogout }) => {
   filteredTransactions.forEach(t => {
     const d = new Date(t.date);
     const month = d.getMonth();
-    if (t.amount > 0) incomeByMonth[month] += t.amount;
-    else expensesByMonth[month] += Math.abs(t.amount);
+    if (t.category === 'Revenue') incomeByMonth[month] += Math.abs(t.amount);
+    else if (t.category === 'Expense') expensesByMonth[month] += Math.abs(t.amount);
   });
   const chartData = {
     labels: months,
@@ -346,19 +350,6 @@ const HomePage: React.FC<DashboardProps> = ({ onLogout }) => {
             </button>
           </div>
 
-          <SummaryCards balance={balance} revenue={revenue} expenses={expenses} savings={savings} />
-          
-          <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '24px', marginBottom: '24px' }}>
-            <div style={{ background: '#181a20', borderRadius: '14px', padding: '20px', boxShadow: '0 0 12px 0 #000' }}>
-              <h3 style={{ color: '#fff', margin: '0 0 16px 0', fontSize: '20px', fontWeight: '600' }}>Overview</h3>
-              <OverviewChart chartData={chartData} chartOptions={chartOptions} />
-            </div>
-            <div style={{ background: '#181a20', borderRadius: '14px', padding: '20px', boxShadow: '0 0 12px 0 #000' }}>
-              <h3 style={{ color: '#fff', margin: '0 0 16px 0', fontSize: '20px', fontWeight: '600' }}>Recent Transactions</h3>
-              <RecentTransactions recentTransactions={recentTransactions} getInitials={getInitials} />
-            </div>
-          </div>
-
           <div style={{ background: '#181a20', borderRadius: '14px', padding: '20px', boxShadow: '0 0 12px 0 #000', marginBottom: '24px' }}>
             <h3 style={{ color: '#fff', margin: '0 0 16px 0', fontSize: '20px', fontWeight: '600' }}>Filters & Export</h3>
             <FilterBar
@@ -375,6 +366,19 @@ const HomePage: React.FC<DashboardProps> = ({ onLogout }) => {
               statusList={statusList}
               downloadCSV={downloadCSV}
             />
+          </div>
+
+          <SummaryCards balance={balance} revenue={revenue} expenses={expenses} savings={savings} />
+          
+          <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '24px', marginBottom: '24px' }}>
+            <div style={{ background: '#181a20', borderRadius: '14px', padding: '20px', boxShadow: '0 0 12px 0 #000' }}>
+              <h3 style={{ color: '#fff', margin: '0 0 16px 0', fontSize: '20px', fontWeight: '600' }}>Overview</h3>
+              <OverviewChart chartData={chartData} chartOptions={chartOptions} />
+            </div>
+            <div style={{ background: '#181a20', borderRadius: '14px', padding: '20px', boxShadow: '0 0 12px 0 #000' }}>
+              <h3 style={{ color: '#fff', margin: '0 0 16px 0', fontSize: '20px', fontWeight: '600' }}>Recent Transactions</h3>
+              <RecentTransactions recentTransactions={recentTransactions} getInitials={getInitials} />
+            </div>
           </div>
 
           {error && (

@@ -41,6 +41,11 @@ export const filterTransactions = async (req: Request, res: Response) => {
 
 export const createTransaction = async (req: Request, res: Response) => {
   try {
+    if (req.body.category === 'Revenue') {
+      req.body.amount = Math.abs(req.body.amount);
+    } else if (req.body.category === 'Expense') {
+      req.body.amount = -Math.abs(req.body.amount);
+    }
     const transaction = new Transaction(req.body);
     await transaction.save();
     res.status(201).json(transaction);
@@ -51,6 +56,11 @@ export const createTransaction = async (req: Request, res: Response) => {
 
 export const updateTransaction = async (req: Request, res: Response) => {
   try {
+    if (req.body.category === 'Revenue') {
+      req.body.amount = Math.abs(req.body.amount);
+    } else if (req.body.category === 'Expense') {
+      req.body.amount = -Math.abs(req.body.amount);
+    }
     const transaction = await Transaction.findOneAndUpdate({ id: req.params.id }, req.body, { new: true });
     if (!transaction) return res.status(404).json({ message: 'Transaction not found' });
     res.json(transaction);

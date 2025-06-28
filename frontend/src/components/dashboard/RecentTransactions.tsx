@@ -25,8 +25,8 @@ const RecentTransactions: React.FC<RecentTransactionsProps> = ({ recentTransacti
           <div className={styles.userName}>{t.user_id}</div>
           <div className={styles.category}>{t.category}</div>
         </div>
-        <div className={styles.amount + ' ' + (t.amount > 0 ? styles.positive : styles.negative)}>
-          {t.amount > 0 ? '+' : ''}${t.amount.toFixed(2)}
+        <div className={styles.amount + ' ' + (t.category === 'Revenue' ? styles.positive : styles.negative)}>
+          {t.category === 'Revenue' ? '+' : '-'}${Math.abs(t.amount).toFixed(2)}
         </div>
       </div>
     ))}

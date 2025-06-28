@@ -20,7 +20,7 @@ const SummaryCards: React.FC<SummaryCardsProps> = ({ balance, revenue, expenses,
     </div>
     <div className={styles.card + ' ' + styles.expenses}>
       <div>Expenses</div>
-      <div className={styles.amount}>${Math.abs(expenses).toLocaleString()}</div>
+      <div className={styles.amount}>-${expenses.toLocaleString()}</div>
     </div>
     <div className={styles.card + ' ' + styles.savings}>
       <div>Savings</div>

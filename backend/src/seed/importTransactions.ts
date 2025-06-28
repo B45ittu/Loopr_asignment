@@ -15,7 +15,14 @@ async function importTransactions() {
     await mongoose.connect(MONGO_URI);
     console.log('Connected to MongoDB!');
     const data = fs.readFileSync(DATA_PATH, 'utf-8');
-    const transactions = JSON.parse(data);
+    const transactions = JSON.parse(data).map((tx: any) => {
+      if (tx.category === 'Revenue') {
+        tx.amount = Math.abs(tx.amount);
+      } else if (tx.category === 'Expense') {
+        tx.amount = -Math.abs(tx.amount);
+      }
+      return tx;
+    });
     await Transaction.deleteMany({});
     await Transaction.insertMany(transactions);
     console.log('Transactions imported successfully!');
