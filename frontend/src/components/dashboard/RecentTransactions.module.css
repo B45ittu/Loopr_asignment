@@ -1,0 +1,47 @@
+.recentList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 8px 0;
+}
+.recentItem {
+  display: flex;
+  align-items: center;
+  background: #232733;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px 0 #181c2333;
+  padding: 10px 16px;
+  transition: box-shadow 0.15s, transform 0.15s;
+  border: none;
+}
+.recentItem:hover {
+  box-shadow: 0 6px 16px 0 #181c2333;
+  transform: translateY(-2px) scale(1.01);
+}
+.avatar {
+  margin-right: 12px;
+  box-shadow: none;
+}
+.userInfo {
+  flex: 1;
+}
+.userName {
+  font-weight: 600;
+  color: #fff;
+}
+.category {
+  font-size: 13px;
+  color: #aaa;
+}
+.amount {
+  font-weight: 700;
+  font-size: 16px;
+  min-width: 80px;
+  text-align: right;
+}
+.positive {
+  color: #43e97b;
+}
+.negative {
+  color: #ff9800;
+} 

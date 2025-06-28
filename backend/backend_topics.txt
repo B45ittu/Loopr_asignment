@@ -1,0 +1,47 @@
+Topics & Technologies Used in the Backend:
+
+1. Node.js & Express
+   - Setting up an Express server
+   - Creating RESTful API endpoints
+
+2. TypeScript
+   - Using TypeScript for type safety
+   - Defining interfaces and types for models and controllers
+
+3. Project Structure & Organization
+   - Organizing code into folders: controllers, routes, models, middleware, config, seed
+   - Separation of concerns (controllers for logic, routes for endpoints, models for data)
+
+4. MongoDB & Mongoose
+   - Connecting to MongoDB (Atlas cloud)
+   - Defining Mongoose schemas and models
+   - Performing CRUD operations with Mongoose
+
+5. Authentication & Security
+   - Implementing JWT (JSON Web Token) authentication
+   - Creating login and protected routes
+   - Hashing passwords with bcryptjs
+
+6. Environment Configuration
+   - Using .env files and environment variables (dotenv)
+   - Managing configuration in a dedicated config folder
+
+7. Data Seeding & Import
+   - Writing scripts to import JSON data into MongoDB
+   - Using sample data for users and transactions
+
+8. Middleware
+   - Creating custom middleware for JWT authentication
+   - Using Express middleware for JSON parsing
+
+9. Error Handling
+   - Handling errors in controllers and middleware
+   - Sending appropriate HTTP status codes and messages
+
+10. API Testing
+    - Testing endpoints with Postman
+    - Using Authorization headers for protected routes
+
+11. Version Control & Dependency Management
+    - Using npm for package management
+    - Managing dev and production dependencies 

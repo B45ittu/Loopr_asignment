@@ -1,0 +1,58 @@
+.filterBar {
+  display: flex;
+  gap: 18px;
+  margin-bottom: 28px;
+  align-items: center;
+  background: #111111;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px 0 #181c2333;
+  padding: 18px 24px;
+  border: none;
+}
+.input {
+  background: #7192cc;
+  color: #fff;
+  padding: 8px 18px;
+  border-radius: 8px;
+  width: 320px;
+  box-shadow: none;
+  border: 1px solid #63697a;
+  font-size: 16px;
+  font-weight: 500;
+  outline: none;
+  transition: border 0.15s, box-shadow 0.15s;
+}
+.input:focus {
+  border: 1.5px solid #43e97b;
+  box-shadow: 0 0 4px 0 #43e97b33;
+}
+.select {
+  background: rgba(60, 40, 120, 0.25); /* glassy purple */
+  color: #fff;
+  border-radius: 8px;
+  min-width: 140px;
+  box-shadow: 0 4px 24px 0 rgba(80, 60, 180, 0.12), 0 1.5px 8px 0 rgba(120, 80, 255, 0.10);
+  border: 1.5px solid rgba(180, 136, 255, 0.35);
+  font-size: 16px;
+  font-weight: 600;
+  outline: none;
+  transition: border 0.15s, box-shadow 0.15s;
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  text-shadow: 0 1px 4px rgba(60,40,120,0.18), 0 0.5px 0.5px rgba(0,0,0,0.18);
+}
+.userSelect, .categorySelect, .statusSelect {
+  border: 1px solid #232733;
+  box-shadow: none;
+  text-decoration-color: #fff;
+}
+.menuPaper, .userMenu, .categoryMenu, .statusMenu {
+  background: rgba(24, 28, 35, 0.55) !important;
+  color: #fff !important;
+  box-shadow: 0 8px 32px 0 rgba(80, 60, 180, 0.18) !important;
+  border: 1.5px solid rgba(180, 136, 255, 0.22) !important;
+  backdrop-filter: blur(16px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 4px rgba(60,40,120,0.18), 0 0.5px 0.5px rgba(0,0,0,0.18) !important;
+} 

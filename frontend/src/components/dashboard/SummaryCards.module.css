@@ -1,0 +1,35 @@
+.cardsRow {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.card {
+  flex: 1;
+  height: 110px;
+  background: linear-gradient(135deg, rgba(130, 149, 202, 0.85) 60%, rgba(179,136,255,0.13) 100%);
+  border-radius: 18px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.card:hover {
+  transform: translateY(-4px) scale(1.03);
+}
+.amount {
+  font-size: 28px;
+  font-weight: 700;
+  margin-top: 6px;
+  letter-spacing: 0.5px;
+}
+.balance {
+}
+.revenue {
+}
+.expenses {
+}
+.savings {
+} 

@@ -1,0 +1,142 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  background: #f5f6fa;
+}
+
+.title {
+  margin-bottom: 16px;
+  color: #1976d2;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.subtitle {
+  margin-bottom: 32px;
+  color: #333;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+/* .logoutBtn {
+  margin-top: 16px;
+  font-size: 1rem;
+  padding: 10px 32px;
+}  */
+
+.dashboardRoot {
+  display: flex;
+  min-height: 100vh;
+  background: #181c23;
+  position: relative;
+  overflow: hidden;
+}
+
+.dashboardRoot::before {
+  content: none;
+}
+
+.dashboardContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.mainContent {
+  flex: 1;
+  padding: 40px 40px 32px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  min-width: 0;
+  background: #232733;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px 0 #181c2333;
+  margin: 28px 0 28px 0;
+  border: 1.5px solid #232733;
+}
+
+.dashboardRow {
+  display: flex;
+  gap: 28px;
+  margin-bottom: 28px;
+  min-width: 0;
+}
+
+.overviewCard {
+  flex: 2;
+  min-height: 400px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  background: #232733;
+  border-radius: 12px;
+  min-width: 0;
+  padding: 0;
+}
+
+.recentCard {
+  flex: 1;
+  height: 400px;
+  background: #232733;
+  border-radius: 12px;
+  padding: 0 0 0 8px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.transactionsSection {
+  background: #232733;
+  border-radius: 12px;
+  min-height: 300px;
+  color: #fff;
+  padding: 0;
+  margin-top: 8px;
+  min-width: 0;
+}
+
+.sectionTitle {
+  font-weight: 700;
+  font-size: 22px;
+  color: #fff;
+  margin: 20px 0 18px 8px;
+  letter-spacing: 0.5px;
+  text-shadow: none;
+}
+
+.error {
+  color: #ff5252;
+  margin-bottom: 16px;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.downloadBtn {
+  background: #353a50;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 22px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px 0 #181c2333;
+  margin-bottom: 18px;
+  margin-left: 8px;
+  transition: background 0.15s, transform 0.15s;
+  text-shadow: none;
+}
+.downloadBtn:hover {
+  background: #444a63;
+  transform: translateY(-2px) scale(1.04);
+}
