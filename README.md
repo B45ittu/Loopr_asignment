@@ -1,4 +1,4 @@
-# 💸 Loopr Assignment: Finance Dashboard
+# 💸Finance Dashboard
 
 A modern full-stack finance dashboard for managing and visualizing transactions with advanced filtering, CRUD operations, and beautiful UI.
 
